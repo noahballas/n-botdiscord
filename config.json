@@ -1,0 +1,67 @@
+{
+    "clientId": "clientId",
+    "guildId": "guildId",
+    "token": "votre_token",
+    "banRoles": [
+        "ban_roles"
+    ],
+    "deleteConvRoles": [
+      "deleteConvRoles",
+      "deleteConvRoles"
+    ],
+    "forumLink": "https://monforum.fr/",
+    "shopLink": "https://maboutique.fr/",
+    "workshopLink": "https://steamcommunity.com/workshop/filedetails/?id=",
+    "topservLink": "https://top-serveurs.net/garrys-mod/",
+    "discordswat": "discord.gg/",
+    "discordpolice": "discord.gg/",
+    "welcomeChannelId": "welcomeChannelId",
+    "leaveChannelId": "leaveChannelId",
+    "serverLogoUrl": "https://i.imgur.com/aiecS0a.jpeg", 
+    "suggestionsChannelId": "1278075111152287784",
+    "nametwitch": "nom_comm",
+    "twitch": "https://www.twitch.tv/votrechain",
+    "adminRoles": [
+      "adminRoles"
+    ],
+    "ticketChannelId": "ticketChannelId",
+    "staffChannelId": "staffChannelId",
+    "ticketCategories": [
+      {
+        "label": "🎟️ | Support",
+        "description": "Pour des questions ou des problèmes de support.",
+        "roleId": "1280523226778439771",
+        "categoryId": "1280560376920014920"
+    },
+    {
+        "label": "🚗 | Achat Véhicule import",
+        "description": "Pour les questions ou les problèmes liés à l'achat de véhicules importés du workshop.",
+        "roleId": "1280523226778439771",
+        "categoryId": "1280560376920014920"
+    },
+    {
+        "label": "🚓 | Plainte Joueur",
+        "description": "Pour les plaintes concernant un joueur.",
+        "roleId": "1280523226778439771",
+        "categoryId": "1280560376920014920"
+    },
+    {
+        "label": "⚖️ | Plainte Staff",
+        "description": "Pour les plaintes concernant le staff.",
+        "roleId": "1280523226778439771",
+        "categoryId": "1280560376920014920"
+    },
+    {
+        "label": "📋 | Unban",
+        "description": "Pour les demandes d'unban.",
+        "roleId": "1280523226778439771",
+        "categoryId": "1280560376920014920"
+    },
+    {
+        "label": "🛒 | Boutique",
+        "description": "Pour les questions ou les problèmes liés à la boutique.",
+        "roleId": "1280523226778439771",
+        "categoryId": "1280560376920014920"
+    }
+  ]
+}
