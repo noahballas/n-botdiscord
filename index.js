@@ -37,7 +37,7 @@ for (const file of commandFiles) {
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);  
-    client.user.setActivity(config.status);// WATCHING, LISTENING ou pas type mais url:lien twitch pour STREAMING  
+    // client.user.setActivity(WATCHING);// WATCHING, LISTENING ou pas type mais url:lien twitch pour STREAMING  
     client.user.setStatus('dnd'); //dnd, invisible, online, idle
 });
 
