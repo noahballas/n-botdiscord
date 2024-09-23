@@ -1,4 +1,4 @@
-# Découvre le bot Discord ultime, conçu pour transformer ton serveur en une expérience interactive et fluide BORT !
+# Découvre le bot Discord ultime, conçu pour transformer ton serveur en une expérience interactive et fluide !
 
 Caractéristiques Principales :
 
