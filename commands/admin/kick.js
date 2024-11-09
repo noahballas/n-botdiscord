@@ -19,7 +19,6 @@ module.exports = {
         const member = await interaction.guild.members.fetch(user.id);
         const userRoles = interaction.member.roles.cache;
 
-        // Vérifier si l'utilisateur a un rôle avec la permission de kicker
         const hasPermission = userRoles.some(role => banRoles.includes(role.id));
 
         if (!hasPermission) {

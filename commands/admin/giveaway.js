@@ -17,7 +17,7 @@ module.exports = {
                 .setDescription('Nombre de gagnants')
                 .setRequired(true)),
     async execute(interaction) {
-        // Vérification initiale
+
         if (!interaction.isCommand()) return;
 
         const prize = interaction.options.getString('prix');
@@ -25,12 +25,10 @@ module.exports = {
         const numberOfWinners = interaction.options.getInteger('nombre_gagnants');
         const channel = interaction.channel;
 
-        // Validation du nombre de gagnants
         if (numberOfWinners < 1) {
             return interaction.reply({ content: 'Le nombre de gagnants doit être d\'au moins 1.', ephemeral: true });
         }
 
-        // Création de l'embed de départ
         const embed = new EmbedBuilder()
             .setTitle('🎉 Giveaway !')
             .setDescription(`**Prix:** ${prize}\nRéagissez avec 🎉 pour participer !\n**Durée:** ${duration} minutes\n**Nombre de gagnants:** ${numberOfWinners}`)
@@ -38,11 +36,9 @@ module.exports = {
             .setTimestamp(Date.now() + duration * 60000)
             .setFooter({ text: `Se termine à` });
 
-        // Envoi de l'embed une seule fois
         const message = await channel.send({ embeds: [embed] });
         await message.react('🎉');
 
-        // Attendre la fin du giveaway
         setTimeout(async () => {
             const reaction = message.reactions.cache.get('🎉');
             if (!reaction) {
@@ -56,7 +52,6 @@ module.exports = {
                 return channel.send('Pas de participants au giveaway.');
             }
 
-            // Limiter le nombre de gagnants au nombre de participants disponibles
             const winnersCount = Math.min(numberOfWinners, participants.length);
             const winners = [];
 
@@ -66,13 +61,11 @@ module.exports = {
                 winners.push(winner);
             }
 
-            // Mettre à jour l'embed existant avec les gagnants
             embed.setDescription(`🎉 **Giveaway terminé !** 🎉\n**Prix:** ${prize}\n**Gagnant(s):**\n${winners.map(winner => winner.tag).join('\n')}`)
                 .setColor('#FFD700');
 
             await message.edit({ embeds: [embed] });
 
-            // Annoncer les gagnants dans le même channel
             await channel.send(`🎉 Félicitations ${winners.map(winner => winner.toString()).join(', ')}! Vous avez gagné **${prize}**!`);
         }, duration * 60000);
     }
