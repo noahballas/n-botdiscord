@@ -138,7 +138,7 @@ module.exports = (client) => {
                 });
 
                 try {
-                    await ticketChannel.delete('Ticket closed by user');
+                    await ticketChannel.delete('Ticket closed par user');
                 } catch (error) {
                     console.error('Erreur lors de la suppression du canal:', error);
                 }
