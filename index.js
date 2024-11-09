@@ -41,7 +41,7 @@ const rest = new REST({ version: '10' }).setToken(token);
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
-    client.user.setStatus('dnd'); //dnd, invisible, online, idle
+    client.user.setStatus('dnd'); //dnd, invisible, online, idle.
 });
 
 (async () => {

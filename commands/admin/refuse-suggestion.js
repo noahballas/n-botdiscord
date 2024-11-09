@@ -24,7 +24,7 @@ module.exports = {
             }
 
             const embed = message.embeds[0];
-            const updatedEmbed = EmbedBuilder.from(embed).setColor('#FF0000'); // Rouge pour refusé
+            const updatedEmbed = EmbedBuilder.from(embed).setColor('#FF0000'); 
 
             await message.edit({ embeds: [updatedEmbed] });
             const thread = message.hasThread ? await message.thread : null;

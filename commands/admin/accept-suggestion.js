@@ -26,7 +26,7 @@ module.exports = {
             }
 
             const embed = message.embeds[0];
-            const updatedEmbed = EmbedBuilder.from(embed).setColor('#00FF00'); // Vert pour accepté
+            const updatedEmbed = EmbedBuilder.from(embed).setColor('#00FF00'); 
 
             await message.edit({ embeds: [updatedEmbed] });
             const thread = message.hasThread ? await message.thread : null;

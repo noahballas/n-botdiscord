@@ -20,7 +20,7 @@ module.exports = {
             autoArchiveDuration: ThreadAutoArchiveDuration.OneDay,
         });
 
-        await thread.send(`Merci pour la suggestion, ${message.author}!`);
+        await thread.send(`Merci pour la suggestion ${message.author}!`);
 
         await sentMessage.react('✅');
         await sentMessage.react('🤷');
