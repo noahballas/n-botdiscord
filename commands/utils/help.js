@@ -18,7 +18,7 @@ module.exports = {
 - \`/forum\` : Affiche le forum.
 - \`/workshop\` : Affiche le workshop.
 - \`/topserv\` : Affiche le lien top serveur.
-- \`/creepar\` : Affiche le créateur 😁.
+- \`/credit\` : Affiche le créateur 😁.
             `,
             ephemeral: true,
         });

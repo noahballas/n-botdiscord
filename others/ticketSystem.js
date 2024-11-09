@@ -46,7 +46,6 @@ module.exports = (client) => {
             .setThumbnail("https://i.imgur.com/1XRZovN.png")
             .setImage("https://i.imgur.com/cFiBq33.png");
 
-        // Envoi du message d'embed et sauvegarde de la référence
         try {
             initialTicketMessage = await channel.send({ embeds: [embed], components: [row] });
             console.log('Embed envoyé avec ID:', initialTicketMessage.id);
@@ -62,7 +61,6 @@ module.exports = (client) => {
                 const category = ticketCategories[categoryIndex];
                 const userId = interaction.user.id;
 
-                // Check if the user already has an open ticket
                 const existingTicket = interaction.guild.channels.cache.find(ch => 
                     ch.name.startsWith(`ticket-${interaction.user.username}`) && ch.type === 0
                 );

@@ -7,7 +7,6 @@ module.exports = {
         const channel = member.guild.channels.cache.get(welcomeChannelId);
         if (!channel) return;
 
-        // Créer l'embed de bienvenue
         const welcomeEmbed = new EmbedBuilder()
             .setColor('#00FF00')
             .setTitle('Ho ! Un nouveau membre !')

@@ -16,28 +16,32 @@ const client = new Client({
 
 client.commands = new Collection();
 
-// Charger les commandes
-const commandsPath = path.join(__dirname, 'commands');
-const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
-
-for (const file of commandFiles) {
-    const filePath = path.join(commandsPath, file);
-    const command = require(filePath);
-    client.commands.set(command.data.name, command);
-}
-
-// Déployer les commandes
-const rest = new REST({ version: '10' }).setToken(token);
 const commands = [];
 
-for (const file of commandFiles) {
-    const command = require(`./commands/${file}`);
-    commands.push(command.data.toJSON());
+function loadCommands(directory) {
+    const files = fs.readdirSync(directory);
+
+    for (const file of files) {
+        const filePath = path.join(directory, file);
+        const fileStat = fs.statSync(filePath);
+
+        if (fileStat.isDirectory()) {
+            loadCommands(filePath);
+        } else if (file.endsWith('.js')) {
+            const command = require(filePath);
+            client.commands.set(command.data.name, command);
+            commands.push(command.data.toJSON());
+        }
+    }
 }
 
+// Appeler la fonction pour charger toutes les commandes
+loadCommands(path.join(__dirname, 'commands'));
+
+const rest = new REST({ version: '10' }).setToken(token);
+
 client.on('ready', () => {
-    console.log(`Logged in as ${client.user.tag}!`);  
-    // client.user.setActivity(WATCHING);// WATCHING, LISTENING ou pas type mais url:lien twitch pour STREAMING  
+    console.log(`Logged in as ${client.user.tag}!`);
     client.user.setStatus('dnd'); //dnd, invisible, online, idle
 });
 
@@ -71,7 +75,6 @@ client.on('interactionCreate', async interaction => {
     }
 });
 
-// Charger les événements
 const eventsPath = path.join(__dirname, 'events');
 const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'));
 
@@ -84,7 +87,6 @@ for (const file of eventFiles) {
     }
 }
 
-// Charger les fichiers dans "others"
 const othersPath = path.join(__dirname, 'others');
 const otherFiles = fs.readdirSync(othersPath).filter(file => file.endsWith('.js'));
 
