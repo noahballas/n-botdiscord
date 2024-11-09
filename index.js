@@ -35,7 +35,6 @@ function loadCommands(directory) {
     }
 }
 
-// Appeler la fonction pour charger toutes les commandes
 loadCommands(path.join(__dirname, 'commands'));
 
 const rest = new REST({ version: '10' }).setToken(token);
