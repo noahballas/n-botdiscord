@@ -1,5 +1,5 @@
 const { SlashCommandBuilder, EmbedBuilder, PermissionsBitField } = require('discord.js');
-const { adminRoles } = require('../config.json');
+const { banRoles } = require('../../config.json');
 
 module.exports = {
     data: new SlashCommandBuilder()

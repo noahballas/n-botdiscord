@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js');
-const { deleteConvRoles } = require('../config.json');
+const { adminRoles } = require('../../config.json');
 
 module.exports = {
     data: new SlashCommandBuilder()

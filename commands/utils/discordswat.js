@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js');
-const { discordswat } = require('../config.json');
+const { discordswat } = require('../../config.json');
 
 module.exports = {
     data: new SlashCommandBuilder()

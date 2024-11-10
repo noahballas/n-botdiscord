@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js');
-const { banRoles } = require('../config.json');
+const { banRoles } = require('../../config.json');
 
 module.exports = {
     data: new SlashCommandBuilder()
