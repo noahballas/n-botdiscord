@@ -102,7 +102,8 @@ module.exports = (client) => {
         }
 
         try {
-            const ticketName = `ticket-${interaction.user.id}-${Date.now().toString().slice(-4)}`.toLowerCase();
+            const safeUsername = interaction.user.username.toLowerCase().replace(/[^a-z0-9]/g, '');
+            const ticketName = `ticket-${safeUsername}`;
             const ticketChannel = await interaction.guild.channels.create({
                 name: ticketName,
                 type: ChannelType.GuildText,
