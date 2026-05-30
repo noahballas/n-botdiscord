@@ -1,23 +1,71 @@
-# 🚀 The Ultimate Discord Bot for Your Server!
-Transform your Discord server into an interactive and seamless experience with our all-in-one bot!
-## 🔥 Key Features:
-### ✅ Welcome & Goodbye System
-Give a warm welcome to new members and send personalized farewell messages to create a strong and engaging community.
+Bot Discord — Communauté GMod
 
-### ✅ Slash Commands & Admin Tools
-Simplify server management with intuitive slash commands, making it easy for everyone to interact with the bot.
+Configuration interactive (Version 3)
 
-### ✅ Suggestion System
-Let your community share their ideas and improvements directly through the bot for better engagement and innovation.
+```bash
+/config
+```
 
-### ✅ Ticket System
-Manage support requests efficiently with an organized and user-friendly ticketing system.
+Ouvre un panneau embed avec :
 
-### ✅ Automated Giveaways
-Easily host exciting contests and giveaways with a fully automated system that ensures fair and random winners.
+- Menu de navigation (Accueil, Serveur, GMod, Liens, Salons, Rôles, Tickets, Bot)
+- Boutons → modals pour textes (nom, IP, URLs, token…)
+- Menus salon / rôle pour assigner sans copier d’IDs
+- Progression visuelle sur l’accueil
+- Sauvegarde instantanée dans config.json
 
-💡 Join our Discord server to test the bot, share your suggestions, and get support!
+Panneau public
 
-👉 My Discord : noah_ballas
+```bash
+/config public:true
+```
 
-https://discord.gg/ka3cM9Avjm
+Affiche le panneau dans le salon (pour l’équipe staff). Préférez l’éphémère pour le token.
+
+Installation (PC / VPS classique)
+
+```bash
+npm install
+npm run setup
+npm start
+```
+
+Installation sur Pterodactyl (panel hébergeur)
+
+1. Créer un serveur avec l’œuf Node.js (Node 18 ou plus).
+2. Envoyer tous les fichiers du bot dans le dossier du serveur (SFTP ou Git).
+3. Onglet Startup du panel :
+   - Additional Node packages (un package par ligne ou séparés par un espace) :
+
+```
+discord.js
+@discordjs/rest
+```
+
+   - Commande de démarrage : `node index.js` (ou laisser `npm start` si l’œuf l’utilise déjà).
+4. Démarrer le serveur une première fois (installation des paquets).
+5. Console du panel, une seule fois :
+
+```bash
+npm run setup
+```
+
+6. Redémarrer le serveur. Le bot doit afficher « Connecté » dans les logs.
+7. Sur Discord : `/config` pour finir salons, rôles et tickets (sans refaire le setup à chaque fois).
+
+Notes Pterodactyl
+- Ne mettez pas le token dans les variables d’environnement du panel si d’autres personnes y ont accès : préférez config.json via setup ou `/config`.
+- Après une mise à jour des fichiers : redémarrage suffit ; relancez `npm run setup` seulement si vous changez token / guild.
+- Si les commandes slash n’apparaissent pas : vérifiez Client ID et Guild ID dans `/config` → Bot, puis redémarrez.
+
+Structure config
+
+```
+src/handlers/config/
+  views.js      Embeds + composants par section
+  router.js     Routage interactions cfg:*
+  modals.js     Formulaires Discord
+  session.js    État navigation / brouillons tickets
+```
+
+Support : noah_ballas — https://discord.gg/ka3cM9Avjm
