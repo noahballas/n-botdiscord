@@ -1,24 +1,21 @@
-const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const { Commands, Server } = require('../../config.json');
+const { SlashCommandBuilder } = require('discord.js');
+const config = require('../../src/config/manager');
+const { baseEmbed, missingConfig } = require('../../src/utils/embeds');
+const { replyEphemeral } = require('../../src/utils/interaction');
 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('ip')
-        .setDescription('Affiche ip du serveur'),
+        .setDescription('IP du serveur Garry\'s Mod'),
+
     async execute(interaction) {
-        if (!Commands?.ipgmod) {
-            return interaction.reply({
-                content: '❌ Le lien du Discord Police n\'est pas configuré',
-                ephemeral: true
-            });
+        const { GMod, Server } = config.get();
+        if (!GMod?.ip) return replyEphemeral(interaction, missingConfig('IP GMod'));
+
+        const embed = baseEmbed(`🎮 ${Server.name}`, `**IP :** \`${GMod.ip}\``);
+        if (GMod.connectCommand) {
+            embed.addFields({ name: 'Steam', value: GMod.connectCommand });
         }
-
-        const embed = new EmbedBuilder()
-            .setColor('#0099ff')
-            .setTitle('IP')
-            .setDescription(`Voici IP du serveur : ${Commands.ipgmod}`)
-            .setThumbnail(Server.logoUrl)
-
-        await interaction.reply({ embeds: [embed] });
-    },
+        return interaction.reply({ embeds: [embed] });
+    }
 };

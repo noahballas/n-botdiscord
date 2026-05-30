@@ -1,23 +1,43 @@
-# 🚀 The Ultimate Discord Bot for Your Server!
-Transform your Discord server into an interactive and seamless experience with our all-in-one bot!
-## 🔥 Key Features:
-### ✅ Welcome & Goodbye System
-Give a warm welcome to new members and send personalized farewell messages to create a strong and engaging community.
+# Bot Discord — Communauté GMod
 
-### ✅ Slash Commands & Admin Tools
-Simplify server management with intuitive slash commands, making it easy for everyone to interact with the bot.
+## Configuration interactive (style DraftBot)
 
-### ✅ Suggestion System
-Let your community share their ideas and improvements directly through the bot for better engagement and innovation.
+```bash
+/config
+```
 
-### ✅ Ticket System
-Manage support requests efficiently with an organized and user-friendly ticketing system.
+Ouvre un **panneau embed** avec :
 
-### ✅ Automated Giveaways
-Easily host exciting contests and giveaways with a fully automated system that ensures fair and random winners.
+- Menu de navigation (Accueil, Serveur, GMod, Liens, Salons, Rôles, Tickets, Bot)
+- Boutons → **modals** pour textes (nom, IP, URLs, token…)
+- Menus **salon / rôle** pour assigner sans copier d’IDs
+- Progression visuelle sur l’accueil
+- Sauvegarde instantanée dans `config.json`
 
-💡 Join our Discord server to test the bot, share your suggestions, and get support!
+### Panneau public
 
-👉 My Discord : noah_ballas
+```bash
+/config public:true
+```
 
-https://discord.gg/ka3cM9Avjm
+Affiche le panneau dans le salon (pour l’équipe staff). Préférez l’éphémère pour le **token**.
+
+## Installation
+
+```bash
+npm install
+npm run setup
+npm start
+```
+
+## Structure config
+
+```
+src/handlers/config/
+  views.js      Embeds + composants par section
+  router.js     Routage interactions cfg:*
+  modals.js     Formulaires Discord
+  session.js    État navigation / brouillons tickets
+```
+
+Support : **noah_ballas** — https://discord.gg/ka3cM9Avjm

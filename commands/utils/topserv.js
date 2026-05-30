@@ -1,24 +1,20 @@
-const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const { Commands, Server } = require('../../config.json');
+const { SlashCommandBuilder } = require('discord.js');
+const config = require('../../src/config/manager');
+const { baseEmbed, missingConfig, serverBranding } = require('../../src/utils/embeds');
+const { replyEphemeral } = require('../../src/utils/interaction');
 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('topserv')
-        .setDescription('Affiche le topserv du serveur'),
+        .setDescription('Lien Top-Serveurs pour voter'),
+
     async execute(interaction) {
-        if (!Commands?.topServers) {
-            return interaction.reply({
-                content: '❌ Le lien du Discord Police n\'est pas configuré',
-                ephemeral: true
-            });
-        }
+        const url = config.getPath(['Commands', 'topServers']);
+        if (!url) return replyEphemeral(interaction, missingConfig('Top-Serveurs'));
 
-        const embed = new EmbedBuilder()
-            .setColor('#0099ff')
-            .setTitle('Top Serveur')
-            .setDescription(`Notre liens top serveur : ${Commands.topServers}`)
-            .setThumbnail(Server.logoUrl)
-
-        await interaction.reply({ embeds: [embed] });
-    },
+        const { name } = serverBranding();
+        return interaction.reply({
+            embeds: [baseEmbed('⭐ Top-Serveurs', `Vote pour **${name}** :\n${url}`)]
+        });
+    }
 };

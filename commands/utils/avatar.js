@@ -13,7 +13,7 @@ module.exports = {
         const member = interaction.guild?.members.cache.get(user.id);
         
         const embed = new EmbedBuilder()
-            .setColor('#0099ff')
+            .setColor(require('../../src/utils/theme').COLORS.primary)
             .setTitle(`🖼️ Avatar de ${user.username}`)
             .setDescription(`[Lien vers l'image](${user.displayAvatarURL({ size: 4096 })})`)
             .setImage(user.displayAvatarURL({ dynamic: true, size: 1024 }))

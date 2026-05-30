@@ -1,80 +1,62 @@
 {
+  "meta": {
+    "configured": false
+  },
   "DiscordBot": {
     "clientId": "VOTRE_CLIENT_ID",
     "guildId": "VOTRE_GUILD_ID",
-    "token": "VOTRE_TOKEN"
+    "token": "VOTRE_TOKEN",
+    "presence": {
+      "status": "online",
+      "activityType": "none",
+      "bio": "",
+      "streamUrl": ""
+    }
   },
   "Commands": {
-    "forum": "https://votreforum.fr/",
-    "shop": "https://votreboutique.fr/",
-    "topServers": "https://top-serveurs.net/",
-    "discordSwat": "https://discord.gg/votre-lien",
-    "discordPolice": "https://discord.gg/votre-lien"
+    "forum": "",
+    "shop": "",
+    "topServers": "",
+    "discordSwat": "",
+    "discordPolice": "",
+    "workshop": "",
+    "credit": ""
+  },
+  "GMod": {
+    "ip": "",
+    "connectCommand": ""
   },
   "Roles": {
-    "banRoles": ["ID_DU_ROLE"],
-    "KickRoles": ["ID_DU_ROLE"],
-    "deleteConvRoles": ["ID_DU_ROLE"],
-    "adminRoles": ["ID_DU_ROLE"],
-    "AcceptSuggestion": "ID_DU_ROLE"
+    "banRoles": [],
+    "kickRoles": [],
+    "deleteConvRoles": [],
+    "adminRoles": [],
+    "acceptSuggestion": ""
   },
   "Channels": {
-    "welcomeChannelId": "ID_DU_CHANNEL",
-    "leaveChannelId": "ID_DU_CHANNEL",
-    "suggestionsChannelId": "ID_DU_CHANNEL",
-    "ticketChannelId": "ID_DU_CHANNEL",
-    "staffChannelId": "ID_DU_CHANNEL",
-    "rolesChannelId": "ID_DU_CHANNEL"
+    "welcomeChannelId": "",
+    "leaveChannelId": "",
+    "suggestionsChannelId": "",
+    "ticketChannelId": "",
+    "staffChannelId": "",
+    "rolesChannelId": ""
   },
   "Server": {
-    "logoUrl": "https://i.imgur.com/exemple.jpeg",
-    "name": "Nom du Serveur",
+    "logoUrl": "",
+    "bannerUrl": "",
+    "name": "Mon serveur GMod",
     "ticketSettings": {
-      "ticketPrefix": "ticket-"
+      "ticketPrefix": "ticket-",
+      "panelDescription": "Choisissez une catégorie pour ouvrir un ticket."
     }
   },
   "Tickets": {
-    "categories": [
-      {
-        "label": "🎟️ | Support",
-        "description": "Pour des questions ou des problèmes de support.",
-        "roleId": "ID_DU_ROLE",
-        "categoryId": "ID_DE_LA_CATEGORIE"
-      },
-      {
-        "label": "🚗 | Véhicule Import",
-        "description": "Demandes concernant les véhicules importés.",
-        "roleId": "ID_DU_ROLE",
-        "categoryId": "ID_DE_LA_CATEGORIE"
-      },
-      {
-        "label": "🚓 | Plainte Joueur",
-        "description": "Signaler un problème avec un joueur.",
-        "roleId": "ID_DU_ROLE",
-        "categoryId": "ID_DE_LA_CATEGORIE"
-      },
-      {
-        "label": "⚖️ | Plainte Staff",
-        "description": "Signaler un problème avec un membre du staff.",
-        "roleId": "ID_DU_ROLE",
-        "categoryId": "ID_DE_LA_CATEGORIE"
-      },
-      {
-        "label": "📋 | Unban",
-        "description": "Demande de débanissement.",
-        "roleId": "ID_DU_ROLE",
-        "categoryId": "ID_DE_LA_CATEGORIE"
-      },
-      {
-        "label": "🛒 | Boutique",
-        "description": "Problèmes avec la boutique.",
-        "roleId": "ID_DU_ROLE",
-        "categoryId": "ID_DE_LA_CATEGORIE"
-      }
-    ],
+    "categories": [],
     "settings": {
       "maxTicketsPerUser": 1,
-      "allowMultipleInDifferentCategories": false
+      "allowMultipleInDifferentCategories": false,
+      "closeCooldownSeconds": 10,
+      "transcriptEnabled": true
     }
   }
 }

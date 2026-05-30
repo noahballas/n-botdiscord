@@ -1,22 +1,49 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
+const config = require('../../src/config/manager');
 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('help')
-        .setDescription('Affiche la liste des commandes disponibles'),
+        .setDescription('Liste des commandes du bot'),
+
     async execute(interaction) {
+        const serverName = config.get().Server.name;
+
         const helpEmbed = new EmbedBuilder()
-            .setColor('#0099ff')
-            .setTitle('📚 Liste des commandes')
+            .setColor(require('../../src/utils/theme').COLORS.primary)
+            .setTitle(`📚 Aide — ${serverName}`)
             .addFields(
-                { name: '🔨 Modération', value: '`/ban`, `/kick`, `/effacer-conversation`' },
-                { name: '🎉 Giveaway', value: '`/giveaway`' },
-                { name: '💡 Suggestions', value: '`/accept-suggestion`, `/refuse-suggestion`' },
-                { name: '📊 Utilitaires', value: '`/ping`, `/avatar`, `/credit`, `/info-serveur`, `/ip`, `/topserv`' },
-                { name: '🎮 Divers', value: '`/boutique`, `/discordpolice`, `/discordswat`, `/forum`, `/workshop`' }
+                {
+                    name: '⚙️ Configuration',
+                    value: '`/config` — panneau interactif (menus, boutons, modals)\n`/config public:true` — panneau visible dans le salon'
+                },
+                {
+                    name: '🔨 Modération',
+                    value: '`/ban` `/kick` `/effacer`'
+                },
+                {
+                    name: '🎉 Communauté',
+                    value: '`/giveaway` — suggestions : écrire dans le salon dédié'
+                },
+                {
+                    name: '💡 Suggestions (staff)',
+                    value: '`/accept-suggestion` `/refuse-suggestion`'
+                },
+                {
+                    name: '🎮 GMod & liens',
+                    value: '`/ip` `/workshop` `/boutique` `/forum` `/topserv`'
+                },
+                {
+                    name: '📊 Utilitaires',
+                    value: '`/ping` `/avatar` `/info-serveur` `/credit`'
+                },
+                {
+                    name: '👮 Factions',
+                    value: '`/discordpolice` `/discordswat`'
+                }
             )
-            .setFooter({ text: ':)' });
+            .setFooter({ text: 'Configuration initiale : npm run setup' });
 
         await interaction.reply({ embeds: [helpEmbed] });
-    },
+    }
 };

@@ -1,24 +1,14 @@
-const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const { Commands, Server } = require('../../config.json');
+const { SlashCommandBuilder } = require('discord.js');
+const { baseEmbed } = require('../../src/utils/embeds');
 
 module.exports = {
-    data: new SlashCommandBuilder()
-        .setName('credit')
-        .setDescription('Affiche le forum du serveur'),
+    data: new SlashCommandBuilder().setName('credit').setDescription('Crédits du bot'),
+
     async execute(interaction) {
-        if (!Commands?.forum) {
-            return interaction.reply({
-                content: '❌ Le lien du Credit n\'est pas configuré',
-                ephemeral: true
-            });
-        }
-
-        const embed = new EmbedBuilder()
-            .setColor('#0099ff')
-            .setTitle('Bot crée par Noah Ballas')
-            .setDescription(`Toutes demande de support possible par MP discord : noah_ballas`)
-            .setThumbnail(Server.logoUrl)
-
-        await interaction.reply({ embeds: [embed] });
-    },
+        await interaction.reply({
+            embeds: [
+                baseEmbed('Bot par Noah Ballas', 'Support : **noah_ballas** sur Discord')
+            ]
+        });
+    }
 };
